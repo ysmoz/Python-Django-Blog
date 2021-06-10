@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
-
+from ckeditor_uploader.fields import  RichTextUploadingField
 
 # Create your models here.
 class Category(models.Model):
@@ -37,7 +37,7 @@ class Blog(models.Model):
     keyword=models.CharField(max_length=255)
     description=models.CharField(max_length=255)
     image=models.ImageField(blank=True,upload_to='images/')
-    detail=models.TextField()
+    detail=RichTextUploadingField()
     file=models.FileField(null=True,blank=True)
     city=models.CharField(max_length=50)
     country=models.CharField(max_length=50)
