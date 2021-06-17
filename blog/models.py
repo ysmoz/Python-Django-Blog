@@ -36,7 +36,7 @@ class Blog(models.Model):
     title=models.CharField(max_length=150)
     keyword=models.CharField(max_length=255)
     description=models.CharField(max_length=255)
-    image=models.ImageField(blank=True,upload_to='images/')
+    image = models.ImageField(blank=True,upload_to='images/')
     detail=RichTextUploadingField()
     file=models.FileField(null=True,blank=True)
     city=models.CharField(max_length=50)
@@ -49,7 +49,7 @@ class Blog(models.Model):
         return self.title
 
     def image_tag(self):
-        return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+      return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
     image_tag.short_description = 'Image'
 
 class Images (models.Model):
