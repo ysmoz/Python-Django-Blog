@@ -3,15 +3,12 @@
       <!-- Slider -->
           {% load static %}
       <div id="nivo-slider">
-
         <div class="nivo-slider">
           <!-- Slide #1 image -->
              {%for rs in sliderdata %}
           <img src="{{ rs.image.url }}" alt="" title="#caption-1" />
              {% endfor %}
         </div>
-
-
         <div class="container">
        {%for rs in sliderdata %}
           <div class="row">
@@ -21,13 +18,11 @@
                 <div>
                   <h2> {{ rs.title }} </h2>
                   <p>
-                    Lorem ipsum dolor sit amet nsectetuer nec Vivamus. Curabitu laoreet amet eget. Viurab oremd ellentesque ameteget. Lorem ipsum dolor sit amet nsectetuer nec vivamus.
+                    {{ rs.detail|safe}}
                   </p>
                   <a href="#" class="btn btn-theme">Read More</a>
                 </div>
               </div>
-              <!-- Slide #2 caption -->
-
             </div>
           </div>
          {% endfor %}
