@@ -2,14 +2,15 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.http import  HttpResponse,HttpResponseRedirect
 # Create your views here.
-from blog.models import  Blog
+from blog.models import Blog, Category
 from home.models import Setting, ContactFormMessage, ContactFormu
 
 
 def index(request):
     setting=Setting.objects.get(pk=1)
     sliderdata=Blog.objects.all()[:3]
-    context = {'setting': setting, 'page':'home','sliderdata':sliderdata}
+    category=Category.objects.all()
+    context = {'setting': setting, 'page':'home','sliderdata':sliderdata,'category':category}
     return render(request, 'index.html', context)
 
 def hakkimda(request):
