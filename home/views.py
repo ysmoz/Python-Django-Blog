@@ -15,12 +15,14 @@ def index(request):
 
 def hakkimda(request):
     setting=Setting.objects.get(pk=1)
-    context = {'setting': setting}
+    category = Category.objects.all()
+    context = {'setting': setting,'category':category}
     return render(request, 'hakkimda.html', context)
 
 def referanslarimiz(request):
     setting=Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page':'referanslarimiz'}
+    category = Category.objects.all()
+    context = {'setting': setting, 'page':'referanslarimiz','category':category}
     return render(request, 'referanslarimiz.html', context)
 
 def iletisim(request):
@@ -34,10 +36,11 @@ def iletisim(request):
             data.message = form.cleaned_data['message']
             data.ip=request.META.get('REMOTE_ADDR')
             data.save()
-            messages.success(request,"Mesajınız başarılı şekilde gönderilmiştir.Teşekkür ederiz")
+            messages.success(request,"MesajÄ±nÄ±z baÅŸarÄ±lÄ± ÅŸekilde gÃ¶nderilmiÅŸtir.TeÅŸekkÃ¼r ederiz")
             return  HttpResponseRedirect('/iletisim')
 
     setting=Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form = ContactFormu()
-    context = {'setting': setting,'form':form}
+    context = {'setting': setting,'form':form,'category':category}
     return render(request, 'iletisim.html', context)
